@@ -18,21 +18,29 @@ module.exports = {
   },
 
   beforeValidate: function(student, cb) {
-  	console.log('The new Before Create'+ student.team)
-  		Team.findOne({id: student.team}).exec(function teamfound(err,found){
-  			capacity = found.capacity
-  			
-  			Student.count({team : student.team}).exec(function countCB(err,count){
-	  			if (count >= capacity){
-	  				cb({"error":"Team exceeded capacity"});
-	  			}
-	  			else{
-	  				cb(null,student);
-	  			}
-
-		});
+    if(student.team){
+    		Team.findOne({id: student.team}).exec(function teamfound(err,found){
+          if (found){
+      			capacity = found.capacity
+      			
+      			Student.count({team : student.team}).exec(function countCB(err,count){
+    	  			if (count >= capacity){
+    	  				cb({"error":"Team exceeded capacity"});
+    	  			}
+    	  			else{
+    	  				cb(null,student);
+    	  			}
+            });
+          }
+          else{
+            cb(err,student);
+          }
 
   		});
+  }
+  else{
+    cb(null,student);
+  }
 		
 }
   
