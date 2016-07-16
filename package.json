@@ -1,7 +1,11 @@
 {
-  "name": "test1",
+  "name": "team",
   "private": true,
   "version": "0.0.0",
+  "engines": {
+    "node": "5.4.0",
+    "npm": "2.15.9"
+  },
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -23,6 +27,7 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9"
   },
+ 
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js"
@@ -33,5 +38,10 @@
     "url": "git://github.com/vidya/test1.git"
   },
   "author": "vidya",
-  "license": ""
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidya/test1/issues"
+  },
+  "homepage": "https://github.com/vidya/test1#readme",
+  "devDependencies": {}
 }
